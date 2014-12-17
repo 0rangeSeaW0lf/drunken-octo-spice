@@ -1,0 +1,2 @@
+module Driver::RidesHelper
+end
