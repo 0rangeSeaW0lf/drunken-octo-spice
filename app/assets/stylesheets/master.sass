@@ -1,0 +1,36 @@
+=fonts($size)
+    font-family: "Helvetica Neue", Helvetica
+    font-weight: $size
+
+h1, h2, h3, h4, h5, h6, .navbar
+    margin: 0
+
+body
+    font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif
+
+.navbar
+    border-radius: 0
+    +fonts(200)
+    box-shadow: 0px 1px 3px #2a2a2a
+    // background:url('dark_wood.png') //To be added
+
+.navbar-inverse a.navbar-brand
+    +fonts(100)
+    color: white
+
+.hero
+    // background: url-image('hero.jpg') no-repeat center center fixed //To be added
+    height: 370px
+    background-size: cover
+    -webkit-background-size: cover
+    box-shadow: 0 3px 8px #2a2a2a
+    
+.frosty
+    background: rgba(0, 0, 0, 0.5)
+    color: white
+    h1
+        +fonts(100)
+        text-shadow: rgba(0,0,0,0.95) 1px 1px
+    h2
+        +fonts(200)
+        text-shadow: rgba(0,0,0,0.95) 1px 1px
