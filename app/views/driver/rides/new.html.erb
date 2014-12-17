@@ -2,22 +2,15 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <h1>Offer a ride on your next long journey</h1>
   <%= simple_form_for @ride, :url => driver_rides_path do |f| %>
-    <div class="address">
-      <%= f.input :departure_name %>
-      <%= f.input_field :departure_latitude, as: :hidden, :class =>"lat" %>
-      <%= f.input_field :departure_longitude, as: :hidden, :class =>"lon" %>
-    </div>
-    <div class="address">
-      <%= f.input :arrival_name %>
-      <%= f.input_field :arrival_latitude, as: :hidden, :class =>"lat" %>
-      <%= f.input_field :arrival_longitude, as: :hidden, :class =>"lon" %>
-    </div>
-    <%= f.simple_fields_for :waypoints do |waypoint| %>
-      <%= render :partial => 'waypoint_fields', :f => waypoint %>
-    <% end %>
+      <%= f.simple_fields_for :waypoints do |waypoint| %>
+        <%= render :partial => 'waypoint_fields', :f => waypoint %>
+      <% end %>
     <div class="links">
-      <%= link_to_add_association 'add task', f, :waypoints %>
+      <%= link_to_add_association 'Add more cities on your route', f, :waypoints %>
     </div>
+    <br />
+    <%= f.input :seats, collection: 1..9 %>
+    <%= f.input :details, as: :text %>
     <br />
     <%= f.submit "Create", :class => 'btn btn-primary' %>
     <br />

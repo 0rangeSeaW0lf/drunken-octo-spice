@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217161837) do
+ActiveRecord::Schema.define(version: 20141217193757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20141217161837) do
 
   add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
 
+  create_table "legs", force: true do |t|
+    t.integer  "waypoint_start_id"
+    t.integer  "waypoint_finish_id"
+    t.integer  "leg_cost"
+    t.integer  "leg_seats"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "legs", ["waypoint_finish_id"], name: "index_legs_on_waypoint_finish_id", using: :btree
+  add_index "legs", ["waypoint_start_id"], name: "index_legs_on_waypoint_start_id", using: :btree
+
   create_table "rides", force: true do |t|
     t.integer  "user_id"
     t.integer  "seats"
@@ -35,15 +47,7 @@ ActiveRecord::Schema.define(version: 20141217161837) do
     t.string   "luggage_size"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "departure_name"
-    t.decimal  "departure_latitude"
-    t.decimal  "departure_longitude"
-    t.string   "arrival_name"
-    t.decimal  "arrival_latitude"
-    t.decimal  "arrival_longitude"
-    t.datetime "departure_time"
-    t.datetime "arrival_time"
-    t.integer  "ride_cost"
+    t.boolean  "ride_insured"
   end
 
   add_index "rides", ["user_id"], name: "index_rides_on_user_id", using: :btree
@@ -71,7 +75,6 @@ ActiveRecord::Schema.define(version: 20141217161837) do
     t.string   "waypoint_name"
     t.decimal  "waypoint_latitude"
     t.decimal  "waypoint_longitude"
-    t.integer  "leg_cost"
     t.integer  "leg_position"
     t.integer  "waypoint_seats"
     t.datetime "created_at"
