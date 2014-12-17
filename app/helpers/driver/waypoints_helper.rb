@@ -1,0 +1,2 @@
+module Driver::WaypointsHelper
+end
