@@ -12,6 +12,12 @@
       <%= f.input_field :arrival_latitude, as: :hidden, :class =>"lat" %>
       <%= f.input_field :arrival_longitude, as: :hidden, :class =>"lon" %>
     </div>
+    <%= f.simple_fields_for :waypoints do |waypoint| %>
+      <%= render :partial => 'waypoint_fields', :f => waypoint %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add task', f, :waypoints %>
+    </div>
     <br />
     <%= f.submit "Create", :class => 'btn btn-primary' %>
     <br />
