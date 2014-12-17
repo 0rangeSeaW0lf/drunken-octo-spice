@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav">
         <li><%= button_to "Find a ride", "#", :metrod => :get, :class => "btn btn-default navbar-btn"%></li>
         <li class="navbar-text">or</li>
-        <li><%= button_to "Offer a ride", "#", :metrod => :get, :class => "btn btn-default navbar-btn"%></li>
+        <li><%= button_to "Offer a Ride", new_driver_ride_path, :method => :get, :class => "btn btn-info navbar-btn" %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

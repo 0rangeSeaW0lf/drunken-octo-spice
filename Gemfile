@@ -66,5 +66,5 @@ gem 'simple_form'
 # Use Figaro
 gem 'figaro'
 
-# Use Google autocomplete
-gem 'gmaps-autocomplete-rails'
+#Use Cocoon to create waypoints
+gem "cocoon"

@@ -4,7 +4,7 @@ class Ride < ActiveRecord::Base
     
     belongs_to :user, inverse_of: :rides
     
-    has_many :waypoints, :dependent => :destroy, inverse_of: :ride
-    accepts_nested_attributes_for :waypoints, :reject_if => :all_blank
+    has_many :waypoints, inverse_of: :ride
+    accepts_nested_attributes_for :waypoints, :reject_if => :all_blank, :allow_destroy => true
     
 end

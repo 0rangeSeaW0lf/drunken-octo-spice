@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap-sprockets
-//= require gmaps-auto-complete
+//= require cocoon
 //= require turbolinks
 //= require_tree .
