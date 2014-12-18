@@ -3,7 +3,12 @@ class Waypoint < ActiveRecord::Base
     # validates :waypoint_longitude, numericality: {greater_than_or_equal_to: -180,  less_than_or_equal_to: 180}
     
     belongs_to :ride, inverse_of: :waypoints
-    has_many :legs
+    
+    has_many :start_legs, foreign_key: "waypoint_start_id", :class_name => Leg
+    has_many :finish_legs, foreign_key: "waypoint_finish_id", :class_name => Leg
+    
 end
 
-# https://github.com/theFirehoseProject/chess/blob/master/app/models/game.rb
+#   has_many :games
+#
+#   has_many :challenged_games, foreign_key: "opponent_id", :class_name => Game

@@ -16,7 +16,7 @@ class Ride < ActiveRecord::Base
             if previous.nil?
                 previous = waypoint
             else
-                all_legs << Leg.new(waypoint_start_id: previous.id, waypoint_finish_id: waypoint.id)
+                all_legs << Leg.new(waypoint_start_id: previous.id, waypoint_finish_id: waypoint.id, leg_seats: self.seats)
                 previous = waypoint
             end
         end
