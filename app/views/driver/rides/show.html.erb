@@ -1,15 +1,15 @@
 <div class="row">
     <div class="booyah-box col-xs-10 col-xs-offset-1">
-        <% @ride.waypoints.each do |w|%>
-            <h4><%= w.waypoint_name%></h4>
+        <div class="row">
+            <h1><%= @ride.waypoints.first.waypoint_name%> -> <%= @ride.waypoints.last.waypoint_name%></h1>
+        </div>
+        <br />
+        <div class="row">
+            <h3>Waypoints</h3>
             <br />
-        <% end%>
-        
-        <%= @ride.build_legs.each do |w| %>
-            <%= w %>
-            <%= w.waypoint_start %>
-        <% end %>
+            <%= @ride.build_legs.each do |w| %>
+                <p><%= w.waypoint_start.waypoint_name %> -> <%= w.waypoint_finish.waypoint_name %></p>
+            <% end %>
+        </div>
     </div>
 </div>
-
-<!--waypoint_finish.waypoint_name-->
