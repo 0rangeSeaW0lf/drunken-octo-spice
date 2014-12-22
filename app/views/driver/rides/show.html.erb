@@ -6,7 +6,6 @@
         <br />
         <div class="row">
             <h3>Waypoints</h3>
-            <br />
             <%= @ride.build_legs.each do |w| %>
                 <p><%= w.waypoint_start.waypoint_name %> -> <%= w.waypoint_finish.waypoint_name %></p>
             <% end %>
