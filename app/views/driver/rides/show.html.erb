@@ -1,14 +1,44 @@
 <div class="row">
-    <div class="booyah-box col-xs-10 col-xs-offset-1">
+    <div class="col-xs-10 col-xs-offset-1">
+    <h2>Your ride from <%= current_ride.legs.first.waypoint_start.waypoint_name %> to <%= current_ride.legs.last.waypoint_finish.waypoint_name %></h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
         <div class="row">
-            <h1><%= @ride.waypoints.first.waypoint_name%> -> <%= @ride.waypoints.last.waypoint_name%></h1>
+            <h3>Map</h3>
         </div>
         <br />
         <div class="row">
-            <h3>Waypoints</h3>
-            <%= @ride.build_legs.each do |w| %>
-                <p><%= w.waypoint_start.waypoint_name %> -> <%= w.waypoint_finish.waypoint_name %></p>
-            <% end %>
+            <h3><%= number_to_currency current_ride.legs.sum(:leg_cost), unit: "€" %> per passenger</h3>
+            <h5>Departure Point: <%= current_ride.legs.first.waypoint_start.waypoint_name %></h5>
+            <h5>Arrival Point: <%= current_ride.legs.last.waypoint_finish.waypoint_name %></h5>
         </div>
+        <br />
+    <div class="row">
+        <div class="col-xs-12">
+            <h5>Departure date</h5>
+            <h5>Departure time</h5>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+        <% if current_ride.legs.size > 1 %>
+            <h4>Travel Segments</h4>
+        <% else %>
+            <h4>Travel Segment</h4>
+        <% end %>
+        <% current_ride.legs.each do |l| %>
+            <div class="col-xs-9">
+                <p><%= l.waypoint_start.waypoint_name %> → <%= l.waypoint_finish.waypoint_name %></p>
+            </div>
+            <div class="col-xs-3">
+                <p><%= number_to_currency l.leg_cost, unit: "€" %></p>
+            </div>
+        <% end %>
+        </div>
+    </div>
+    <%= link_to "Edit ride", edit_driver_ride_path(current_ride), :class => "btn btn-primary"%>
     </div>
 </div>

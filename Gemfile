@@ -68,3 +68,5 @@ gem 'figaro'
 
 #Use Cocoon to create waypoints
 gem "cocoon"
+
+#gem 'wicked'

@@ -7,20 +7,21 @@ class Ride < ActiveRecord::Base
     belongs_to :user, inverse_of: :rides
     
     has_many :waypoints, inverse_of: :ride, dependent: :destroy
+    has_many :legs, inverse_of: :ride, dependent: :destroy
     accepts_nested_attributes_for :waypoints, :reject_if => :all_blank, :allow_destroy => true
+    accepts_nested_attributes_for :legs, :reject_if => :all_blank, :allow_destroy => true
     
     def build_legs
         previous = nil
-        all_legs = []
         self.waypoints.each do |waypoint|
             if previous.nil?
                 previous = waypoint
             else
-                all_legs << Leg.new(waypoint_start_id: previous.id, waypoint_finish_id: waypoint.id, leg_seats: self.seats)
+                self.legs.build(waypoint_start_id: previous.id, waypoint_finish_id: waypoint.id, leg_seats: self.seats)
                 previous = waypoint
             end
         end
-        return all_legs
+        return self.legs
     end
     
 end

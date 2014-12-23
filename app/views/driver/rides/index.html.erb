@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <% if current_user.rides.size >= 1 %>
+            <br />
+            <h1>Rides offered</h1>
+            <br />
+            <% current_user.rides.each do |r|%>
+                <h4><%= r.legs.first.waypoint_start.waypoint_name %> → <%= r.legs.last.waypoint_finish.waypoint_name %></h4>
+                Date
+                <div class="pull-right">
+                    <% if r.seats == 0%>
+                    Full
+                    <% elsif r.seats == 1 %>
+                        <%= r.seats %> seat left
+                    <% else %>
+                        <%= r.seats %> seats left
+                    <% end %>
+                    <%= number_to_currency r.legs.sum(:leg_cost), unit: "€" %> per passenger
+                </div>
+                <br />
+                <%= link_to "Duplicate", "#", :class => "btn" %>
+                <div class="pull-right">
+                    <%= link_to "View ride", driver_ride_path(r.id), :class => "btn" %>
+                    <%= link_to "See visitors", "#", :class => "btn" %>
+                    <%= link_to "Edit", edit_driver_ride_path(r.id), :class => "btn" %>
+                    <%= link_to "Delete", "#", :class => "btn" %>
+                </div>
+                <hr />
+            <% end %>
+        <% end %>
+    </div>
+</div>
