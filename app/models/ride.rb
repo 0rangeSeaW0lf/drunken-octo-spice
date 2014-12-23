@@ -1,4 +1,5 @@
 class Ride < ActiveRecord::Base
+    # validates :luggage_size, :presence => :true
     # validates :seats, numericality: { only_integer: true, greater_than: 0,  less_than_or_equal_to: 9 }
     # validates :ride_insured, acceptance: {accept: true}
     # validates :waypoint_latitude, numericality: {greater_than_or_equal_to: -90,  less_than_or_equal_to: 90}

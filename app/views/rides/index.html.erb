@@ -1,0 +1,22 @@
+<br />
+<br />
+<div class="row">
+    <div class="col-xs-2 col-xs-offset-1">
+        <h5>Date</h5>
+        <h5>Photo</h5>
+        <h5>Experience</h5>
+        <h5>Car Comfort</h5>
+    </div>
+    <div class="col-xs-8">
+        <% @rides.each do |r| %>
+            <h2>Date</h2>
+            <h4><%= r.legs.first.waypoint_start.waypoint_name %> → <%= r.legs.last.waypoint_finish.waypoint_name %></h4>
+            <h3><%= number_to_currency r.legs.sum(:leg_cost), unit: "€" %> per passenger</h3>
+            <%= link_to "Check for more details", rides_show_path(r.id)%>
+        <br />
+        <hr />
+        <br />
+        <% end %>
+    </div>
+    <div></div>
+</div>

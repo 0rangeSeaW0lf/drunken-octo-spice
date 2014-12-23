@@ -8,7 +8,3 @@ class Waypoint < ActiveRecord::Base
     has_many :finish_legs, foreign_key: "waypoint_finish_id", :class_name => Leg
     
 end
-
-#   has_many :games
-#
-#   has_many :challenged_games, foreign_key: "opponent_id", :class_name => Game

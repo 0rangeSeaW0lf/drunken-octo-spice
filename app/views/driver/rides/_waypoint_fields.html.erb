@@ -1,5 +1,5 @@
-<div class="nested-fields">
-  <%= f.input_field :waypoint_name, :class => "in form-control", :placeholder => "Add cities on your route" %>
+<div class="nested-fields location">
+  <%= f.input_field :waypoint_name, :class => "in form-control loc", :placeholder => "Add cities on your route" %>
   <%= f.input_field :waypoint_latitude, as: :hidden, :class =>"lat" %>
   <%= f.input_field :waypoint_longitude, as: :hidden, :class =>"lon" %>
   <%= link_to_remove_association "Remove", f %>

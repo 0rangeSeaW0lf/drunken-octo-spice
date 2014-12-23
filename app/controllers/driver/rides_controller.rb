@@ -40,9 +40,8 @@ class Driver::RidesController < ApplicationController
     end
     
     def ride_params
-        params.require(:ride).permit(:seats, :details, :details, 
-        :departure_name, :departure_latitude, :departure_longitude, :departure_time,
-        :arrival_name, :arrival_latitude, :arrival_longitude, :arrival_time,
+        params.require(:ride).permit(:seats, :details,
+        :luggage_size, :ride_insured,
         :waypoints_attributes => [:waypoint_name, :waypoint_latitude, :waypoint_longitude, :leg_cost, :leg_position, :waypoint_seats, :waypoint_time],
         :legs_attributes => [:leg_cost, :waypoint_start_id, :waypoint_finish_id])
     end

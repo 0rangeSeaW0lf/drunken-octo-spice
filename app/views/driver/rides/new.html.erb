@@ -9,9 +9,10 @@
       <%= link_to_add_association 'Add more cities on your route', f, :waypoints %>
     </div>
     <br />
-    <%= f.input :seats, collection: 1..9 %>
+    <%= f.input :seats, collection: 1..9, :include_blank => false %>
     <%= f.input :details, as: :text %>
-    <br />
+    <%= f.input :luggage_size, collection: ["No room/see comment","Small", "Medium", "Big"], :include_blank => false %>
+    <br /><br />
     <%= f.submit "Create", :class => 'btn btn-primary' %>
     <br />
   <% end %>
